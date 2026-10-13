@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "defaultMode": "default",
+    "deny": [
+      "Bash(pac solution import *)",
+      "Bash(pac pipeline deploy *)",
+      "PowerShell(pac solution import *)",
+      "PowerShell(pac pipeline deploy *)"
+    ]
+  }
+}

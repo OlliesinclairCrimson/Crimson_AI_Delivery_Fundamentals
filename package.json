@@ -1,0 +1,20 @@
+{
+  "name": "crimson-ai-delivery-fundamentals",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tool-neutral Crimson agentic delivery reference and client templates.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "npm run build && node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs",
+    "test": "node --test",
+    "check": "npm test && npm run build"
+  },
+  "devDependencies": {
+    "fflate": "0.8.2"
+  }
+}

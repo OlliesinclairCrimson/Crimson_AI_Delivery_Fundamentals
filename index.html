@@ -1,0 +1,227 @@
+<!doctype html>
+<!--
+THESIS: One delivery standard, replaceable tool adapters. Extend the supplied playbook, not a tool comparison landing page.
+OWN-WORLD: Crimson red, deep teal, white and pale paper; serif headings, system body text, numbered lifecycle and workload families.
+STORY: Read the fundamentals, choose a workload and tool, copy the client template, bring evidence to human review.
+FIRST VIEWPORT: Crimson wordmark and release date, readable delivery-loop hero, section navigation and a concise starting route.
+FORM: Preserve the supplied single-page reference structure; add synchronized selectors without hiding shared rules.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Crimson's tool-neutral reference for agentic delivery: fundamentals, lifecycle, Power Platform workloads, Claude Code and GitHub Copilot setup, and shared client templates.">
+  <meta name="theme-color" content="#003a4b">
+  <title>Crimson AI Delivery Fundamentals</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <div class="brandbar">
+      <span class="wordmark">crimson.</span>
+      <span class="meta">AI Delivery Fundamentals <span aria-hidden="true">&middot;</span> v0.1 <span aria-hidden="true">&middot;</span> 13 October 2026</span>
+    </div>
+    <header class="hero">
+      <h1>One delivery standard.<br>Your choice of agent.</h1>
+      <p class="lead">A practical reference for Crimson developers and consultants. Use Claude Code or GitHub Copilot to deliver well-specified, reviewable work. The tool can change. Accountability does not.</p>
+      <ol class="loop" aria-label="The delivery loop">
+        <li>People frame it</li><li>The agent builds in DEV</li><li>People review it</li><li>Approved pipelines ship it</li><li>Lessons improve the repo</li>
+      </ol>
+      <a class="hero-link" href="#overview">Start with the essentials <span aria-hidden="true">&darr;</span></a>
+    </header>
+    <nav class="toc" aria-label="Playbook sections">
+      <ul>
+        <li><a href="#overview">Essentials</a></li>
+        <li><a href="#fundamentals">Fundamentals</a></li>
+        <li><a href="#lifecycle">Lifecycle</a></li>
+        <li><a href="#workloads">Workloads</a></li>
+        <li><a href="#setup">Setup</a></li>
+        <li><a href="#assets">Repo assets</a></li>
+        <li><a href="#governance">Governance</a></li>
+        <li><a href="#pilot">Tool evaluation</a></li>
+        <li><a href="#sources">Sources</a></li>
+      </ul>
+    </nav>
+    <main id="main">
+      <section id="overview" aria-labelledby="overview-title">
+        <div class="sec-head">
+          <h2 id="overview-title">The playbook on one page</h2>
+          <p>The agent helps with analysis, design, build and verification. People own the backlog, architecture, acceptance and releases. Power Platform is the initial worked example; the fundamentals apply to other engineering stacks too.</p>
+        </div>
+        <div class="notice">
+          <strong>Reference release, not blanket client approval.</strong>
+          <p>Tool guidance was checked against first-party documentation on 13 October 2026. Your engagement lead must confirm client policy, licensing, identity and DEV access. A documentation check is not a live tenant validation.</p>
+        </div>
+        <div class="two">
+          <article class="panel">
+            <h3>For developers</h3>
+            <ol>
+              <li>Get a ready story with testable acceptance criteria.</li>
+              <li>Load the client repo rules and relevant skills.</li>
+              <li>Choose the tool and workload; complete its setup checks.</li>
+              <li>Build on a branch in approved DEV. Collect evidence.</li>
+              <li>Open a PR; a person reviews and accepts the change.</li>
+            </ol>
+            <a href="#workloads">Find your workload</a>
+          </article>
+          <article class="panel">
+            <h3>For consultants and product owners</h3>
+            <ol>
+              <li>Agree the problem, success measures and data permissions.</li>
+              <li>Review the architecture, security model and costs.</li>
+              <li>Own story wording, priority, scope and acceptance.</li>
+              <li>Review evidence and demonstrate the result as real users.</li>
+              <li>Approve release and feed lessons into the next sprint.</li>
+            </ol>
+            <a href="#discovery">Choose a discovery workspace</a>
+          </article>
+        </div>
+        <div class="stack">
+          <article class="layer"><h3>Fundamentals</h3><p>Specification, context, bounded autonomy, human review, evidence and improvement.</p><p class="who">Stable when tools change.</p></article>
+          <article class="layer mid"><h3>Shared repo assets</h3><p>One <code>AGENTS.md</code>, reusable <code>SKILL.md</code> files, story and evidence templates.</p><p class="who">Write once. Review together.</p></article>
+          <article class="layer"><h3>Tool adapters</h3><p>Install, sign in, configure MCP, manage permissions and understand limitations.</p><p class="who">Short, versioned and replaceable.</p></article>
+        </div>
+      </section>
+      <section id="fundamentals" aria-labelledby="fundamentals-title">
+        <div class="sec-head"><h2 id="fundamentals-title">Six fundamentals. Every engagement.</h2><p>These do not depend on an agent brand, model or IDE.</p></div>
+        <ol class="principles">
+          <li><h3>Spec before build</h3><p>Agree scope, acceptance criteria, failure cases and non-functional requirements before implementation. The agent needs a definition of success it can check, not just a request to "make it work".</p></li>
+          <li><h3>Engineer the context</h3><p>Put client rules, naming standards, glossary, architecture decisions and definition of done in the repo. Keep them concise and current. Reference the right skill instead of repeating a long prompt.</p></li>
+          <li><h3>Bound the autonomy</h3><p>Use approved DEV environments, branches and least-privilege identities. Limit tools and require approvals for risky actions. The agent does not get TEST or PROD credentials or permission to approve its own release.</p></li>
+          <li><h3>Review every change</h3><p>Every change goes through a PR, including configuration and skills. Review intent, source diffs, dependencies and evidence. The agent can help review; a person remains accountable for the merge.</p></li>
+          <li><h3>Show verification evidence</h3><p>Map each criterion to a result. Include applicable tests, solution checker results, role-based checks and known limitations. "The agent says it works" is not evidence.</p></li>
+          <li><h3>Close the feedback loop</h3><p>Retrospectives turn recurring rework into better rules, examples or skills. Review updates through a PR, then rerun the affected checks. Do not let personal agent memory become the team's only knowledge.</p></li>
+        </ol>
+        <div class="notice"><strong>Guidance is not enforcement.</strong><p>Instructions influence behavior; identity, environment access and tool permissions constrain it. A deny rule for one command cannot stop equivalent API or MCP operations. A branch does not isolate changes to a live DEV environment.</p></div>
+      </section>
+      <section id="lifecycle" aria-labelledby="lifecycle-title">
+        <div class="sec-head"><h2 id="lifecycle-title">From idea to production</h2><p>Seven stages, each with a human owner and an explicit sign-off. Return to an earlier stage when scope, risk or assumptions change.</p></div>
+        <ol class="life" id="life"><!-- LIFECYCLE --></ol>
+        <div class="backlog">
+          <h3>The agent helps the backlog. It does not own it.</h3>
+          <div class="modes">
+            <article><h4>Draft candidates</h4><p>Use approved workshop notes to suggest stories. A person keeps, rewrites or discards them.</p></article>
+            <article><h4>Refine a story</h4><p>Clarify criteria, suggest smaller slices and add edge cases without changing agreed scope.</p></article>
+            <article><h4>Review for gaps</h4><p>Flag duplicates, dependencies, missing non-functionals and conflicts with the design.</p></article>
+          </div>
+          <p><strong>The product owner decides</strong> what enters the backlog, its priority and when it is accepted. The agent must not add, reorder or mark items done without permission.</p>
+        </div>
+      </section>
+      <section id="discovery" aria-labelledby="discovery-title">
+        <div class="sec-head"><h2 id="discovery-title">A workspace per client</h2><p>Discovery and design are a separate choice from the coding agent. Choose an approved AI assistant workspace, not an assumed universal platform.</p></div>
+        <div class="two">
+          <article class="panel"><h3>Claude Projects</h3><p>Use an approved Project per engagement for curated client context and reviewed discovery outputs. Check the client's agreement for third-party processing, connectors, retention and residency before uploading material.</p><p>Project knowledge is not a guarantee of repository instruction or skill loading.</p></article>
+          <article class="panel"><h3>Microsoft 365 Copilot</h3><p>Evaluate notebooks or agents available under the client's tenant policy and licences. Agree permitted SharePoint, Teams, email and other sources before use; apply client access and retention controls.</p><p>Availability and behavior vary. Do not assume feature parity with Claude Projects.</p></article>
+        </div>
+        <p class="measure"><strong>The same rules apply:</strong> load only approved context; keep clients separate; obtain written approval before Microsoft 365 data is used; validate claims and citations; have the product owner review outputs. Store agreed briefs, stories and decisions in the team's approved system of record.</p>
+      </section>
+      <section id="workloads" aria-labelledby="workloads-title">
+        <div class="sec-head"><h2 id="workloads-title">Choose the workload, then the tool</h2><p>Purpose, platform tooling and verification stay the same. Switch the adapter to see the matching development route. Built-in Power Platform Copilot features are alternatives, not GitHub Copilot setup.</p></div>
+        <!-- WORKLOAD_SELECTORS -->
+        <noscript><p class="notice">Tool switching and filtering need JavaScript. Read the pre-rendered <a href="claude-code.html#workloads">Claude Code</a>, <a href="copilot-cli.html#workloads">Copilot CLI</a> or <a href="copilot-vscode.html#workloads">Copilot in VS Code</a> route. Shared requirements are unchanged.</p></noscript>
+        <div class="filterbar">
+          <div id="chips" class="chips" role="group" aria-label="Filter workload family"><!-- FILTERS --></div>
+          <label class="search-label">Find a workload <input id="workload-search" type="search" placeholder="e.g. cloud flows" autocomplete="off"></label>
+        </div>
+        <p id="workload-count" class="meta" role="status" aria-live="polite">13 workloads</p>
+        <div class="wl-grid" id="workload-grid"><!-- WORKLOADS --></div>
+        <p id="no-workloads" class="notice" hidden>No workloads match. Clear the search or select All.</p>
+      </section>
+      <section id="setup" aria-labelledby="setup-title">
+        <div class="sec-head"><h2 id="setup-title">Set up for a controlled first story</h2><p>Complete the shared checks, then follow the selected adapter. Commands marked "inside the agent" are not PowerShell commands.</p></div>
+        <!-- SETUP_SELECTORS -->
+        <noscript><p class="notice">Choose the pre-rendered setup route: <a href="claude-code.html#setup">Claude Code</a>, <a href="copilot-cli.html#setup">Copilot CLI</a> or <a href="copilot-vscode.html#setup">Copilot in VS Code</a>.</p></noscript>
+        <div class="notice"><strong>Written guidance is the v0.1 onboarding path.</strong><p>The seven original recordings describe Claude-specific setup and older tooling. They are not included as current instructions for either tool. <a href="docs/training.md">See the recording replacement checklist</a>.</p></div>
+        <ol class="setup-list" id="setup-list"><!-- SETUP --></ol>
+        <details class="admin-check">
+          <summary>Administrator checklist: Dataverse MCP</summary>
+          <ol>
+            <li>Get the approved DEV environment and the administrator who owns this change.</li>
+            <li>In Power Platform admin center: Manage &gt; Environments &gt; select DEV &gt; Settings &gt; Product &gt; Features.</li>
+            <li>Check "Allow MCP clients to interact with Dataverse MCP server", then open Advanced Settings.</li>
+            <li>For Claude Code, enable its required registered client record: Is Enabled = Yes, then Save &amp; Close.</li>
+            <li>For GitHub Copilot CLI, enable its required registered client record separately.</li>
+            <li>For Copilot in VS Code, check and enable the record actually used by that authentication route. Do not assume every UI surface has a distinct record, or that enabling Claude enables Copilot.</li>
+            <li>Record client names/IDs and test each selected route with a least-privilege DEV identity. Missing records or denied consent go back to the administrator, not a workaround.</li>
+          </ol>
+          <p>Allowlisting applies to the <code>/api/mcp</code> entrypoint, not all Dataverse APIs. Identity and environment restrictions still apply. <a href="https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-mcp-disable">Microsoft administration reference</a>.</p>
+        </details>
+      </section>
+      <section id="assets" aria-labelledby="assets-title">
+        <div class="sec-head"><h2 id="assets-title">One client repo. Shared knowledge.</h2><p>The template is deliberately unconfigured for client work. Replace its placeholders, review it with the engagement lead and verify loading before allowing environment operations.</p></div>
+        <div class="actions">
+          <a class="button" href="downloads/crimson-client-template.zip" download>Download client repo template</a>
+          <a href="templates/client-repo/README.md">Read the template guide</a>
+        </div>
+        <div class="two">
+          <div class="codebox"><div class="cap"><span>Client repository layout</span><button class="copy" type="button" data-copy="repo-layout">Copy layout</button></div><pre id="repo-layout">client-repo\
+  AGENTS.md                  # client rules and definition of done
+  CLAUDE.md                  # @AGENTS.md
+  .github\
+    copilot-instructions.md   # points to AGENTS.md
+    PULL_REQUEST_TEMPLATE.md  # evidence and human review
+  .claude\
+    settings.json            # manual permissions and deny examples
+    skills\                  # one set of team SKILL.md files
+  .mcp.json                  # shared, public Learn server only
+  .vscode\
+    settings.json            # manual approval defaults
+  examples\
+    vscode-mcp.json          # alternative, not a second active config
+  solutions\  agents\  src\
+  docs\
+    glossary.md  adr\  stories\  evidence\</pre></div>
+          <article class="panel"><h3>Write the rules once</h3><p><code>AGENTS.md</code> holds permitted environments, standards, glossary references, approval boundaries and definition of done. <code>CLAUDE.md</code> imports it. The Copilot bridge points to it; confirm which instructions actually loaded.</p><p>Team skills live in <code>.claude/skills</code>, a supported location for all three documented routes. Skills are loaded on relevance; check actual invocation.</p><p>The portable MCP example includes only public Microsoft Learn. Add Dataverse through approved setup. The alternate VS Code-format example belongs in <code>.vscode/mcp.json</code> only if your chosen host needs it; avoid duplicate active definitions.</p></article>
+        </div>
+        <div class="two">
+          <article class="panel"><h3>Reusable team skills</h3><ul><li>Story readiness and testable criteria</li><li>Architecture decisions and licensing/cost checks</li><li>Verification evidence and role-based checks</li><li>PR review readiness</li><li>Retrospective learning</li></ul><p>Skills are guidance, not permissions. None pre-approves shell tools.</p></article>
+          <article class="panel"><h3>Copyable working documents</h3><ul><li><a href="templates/client-repo/docs/stories/story-template.md">Story and acceptance criteria</a></li><li><a href="templates/client-repo/docs/adr/decision-template.md">Architecture decision record</a></li><li><a href="templates/client-repo/docs/evidence/evidence-template.md">Verification evidence pack</a></li><li><a href="templates/client-repo/docs/evidence/setup-validation.md">Per-tool setup validation</a></li><li><a href="templates/client-repo/docs/evidence/pilot-scorecard.csv" download>Tool pilot scorecard (CSV)</a></li></ul></article>
+        </div>
+      </section>
+      <section id="governance" aria-labelledby="governance-title">
+        <div class="sec-head"><h2 id="governance-title">Before any client work</h2><p>These checks belong to the engagement, not just the developer's machine.</p></div>
+        <ul class="watch">
+          <li><h3>Approval and data</h3><p>Record permitted AI products, models, connectors and data classes. Confirm the client's AI policy, retention, residency, contractual requirements and Microsoft 365 data approval. Use synthetic data unless approved otherwise.</p></li>
+          <li><h3>Identity and boundaries</h3><p>Use a DEV-only, least-privilege identity. Inspect PAC, Azure CLI, MCP OAuth, browser sessions, environment variables and cached credentials. Do not elevate the agent to bypass a failed operation.</p></li>
+          <li><h3>Untrusted content</h3><p>Treat prompts in retrieved documents, tool outputs and dependencies as data, not authority. Review plugins and MCP server publishers, pin approved versions where supported and inspect updates.</p></li>
+          <li><h3>Cost and licensing</h3><p>Confirm developer subscriptions, platform licences and tenant consumption. Set budgets, alerts and caps where supported. Separate subscription allocation from per-story usage cost.</p></li>
+          <li><h3>Reviewable source</h3><p>Export or synchronize low-code changes into source and review the diff before promotion. Store solution-owned assets in solutions; review application code and infrastructure in their own source folders.</p></li>
+          <li><h3>Release and operation</h3><p>People approve TEST and PROD promotion through the agreed ALM route. Record rollback, support ownership and monitoring. Never give an agent permission to self-approve, merge or promote its own change.</p></li>
+        </ul>
+        <div class="tablewrap"><table><caption>Accountability stays with people</caption><thead><tr><th scope="col">Role</th><th scope="col">Owns</th><th scope="col">Never delegates</th></tr></thead><tbody>
+          <tr><th scope="row">Product owner</th><td>Problem, value, backlog and story acceptance</td><td>Priority and acceptance decisions</td></tr>
+          <tr><th scope="row">Consultant / developer</th><td>Context, implementation, verification and reviewable source</td><td>Checking claims and collecting evidence</td></tr>
+          <tr><th scope="row">Technical lead / reviewer</th><td>Architecture, standards, risk and PR review</td><td>Accountability for approved changes</td></tr>
+          <tr><th scope="row">Administrator / release owner</th><td>Access, client registrations and approved promotion</td><td>Environment permissions and release approval</td></tr>
+          <tr><th scope="row">AI agent</th><td>Drafts, bounded implementation and supporting checks</td><td>Has no independent approval authority</td></tr>
+        </tbody></table></div>
+        <p class="measure"><strong>Sprint rhythm:</strong> refinement checks readiness; planning agrees scope and budgets; daily reviews inspect blockers and evidence; demos use realistic roles; retros update the shared rules and skills. Stop and escalate an access breach, unapproved data use or unexplained destructive change.</p>
+      </section>
+      <section id="pilot" aria-labelledby="pilot-title">
+        <div class="sec-head"><h2 id="pilot-title">Choose with evidence, not allegiance</h2><p>The playbook is the test harness for tool choice. There is no declared winner in this first version.</p></div>
+        <div class="two">
+          <article class="panel"><h3>Three real stories</h3><ol><li>A Dataverse table set: relationships, publisher prefix, solution membership and role-based access.</li><li>A cloud flow: connection references, environment variables and a deliberate failure path.</li><li>A Copilot Studio topic: representative phrases, permissions and evaluation evidence.</li></ol><p>Run each story in both tools with the same approved spec, rules, skills and starting artifacts. Use the same developer; alternate tool order to reduce learning bias.</p></article>
+          <article class="panel"><h3>Measure the accepted result</h3><ul><li>Review defects, severity and rework time</li><li>Standards and DEV-only compliance</li><li>Elapsed time, hands-on time and interventions</li><li>Usage cost and allocated subscription cost</li><li>Setup friction and developer preference</li></ul><p>Record model, tool/plugin versions and the Copilot surface. Use isolated DEV state and a consistent reviewer. A serious boundary breach fails the gate; lower cost does not offset it.</p></article>
+        </div>
+        <p class="measure">Three stories offer directional evidence, not a universal ranking. Decide by workload, constraints and client policy. Keep the fundamentals unchanged whichever adapter you select. <a href="docs/pilot.md">Read the pilot procedure</a>.</p>
+      </section>
+      <section id="sources" aria-labelledby="sources-title">
+        <div class="sec-head"><h2 id="sources-title">Sources and support boundaries</h2><p>Executable guidance follows first-party documentation. "Documentation checked" does not mean that Crimson has tested a plugin in your tenant or that its publisher offers production support.</p></div>
+        <ul class="source-list" id="source-list"><!-- SOURCES --></ul>
+        <details><summary>Suggested further reading from the original brief</summary><p>Rajeev Pentyala's Power Automate and code-app walkthroughs; Microsoft DevBlogs on Agent Skills in Visual Studio; Visual Studio Magazine on VS Code Agent Skills; The Prompt Shelf on Claude Code and AGENTS.md; and the Power Platform blog on agentic Power Pages development. Exact article URLs were not supplied. They are research leads, not verified setup references in this release.</p></details>
+        <div class="notice"><strong>Keep the adapters current.</strong><p>After a host, plugin, MCP or policy change, review the relevant adapter, rerun its DEV setup checks and record versions and evidence. Repeated issues become reviewed improvements to the shared assets. <a href="docs/maintenance.md">Maintenance and publication ownership</a>.</p></div>
+      </section>
+    </main>
+    <aside class="closing">
+      <h2>Start small. Make the evidence visible.</h2>
+      <p>One ready story, one approved DEV boundary, one reviewed change. Build confidence through the delivery loop, not through broader agent permissions.</p>
+      <a href="docs/publication.md">Publication and adoption checklist</a>
+    </aside>
+    <footer><span>Crimson AI Delivery Fundamentals &middot; Reference v0.1</span><a href="#overview">Back to essentials</a><a href="docs/release-notes.md">Release notes</a></footer>
+  </div>
+  <p id="interaction-status" class="sr-only" role="status" aria-live="polite"></p>
+</body>
+</html>

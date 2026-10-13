@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+*.log
+.claude/settings.local.json
+.github/copilot/settings.local.json
+node_modules/
+bin/
+obj/
