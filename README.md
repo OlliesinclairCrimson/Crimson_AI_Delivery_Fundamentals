@@ -35,6 +35,7 @@ The validation workflow checks changes and packages a site artifact. Uploading a
 - Host-independent rendering: `render.js`
 - Browser enhancements and preserved preferences: `app.js`
 - Existing Crimson visual identity, with local font fallbacks: `styles.css`
+- Official [Crimson wordmark](https://crimson.co.uk/hubfs/Crimson%20-%20Wordmark%20-%20Positive%20-%20RGB.svg): bundled unchanged as `assets\crimson-wordmark.svg`, with no external image request
 - Short tool guides: [Claude Code](docs/adapters/claude-code.md) and [GitHub Copilot](docs/adapters/github-copilot.md)
 - Canonical client template: `templates\client-repo`
 - [Maintenance ownership](docs/maintenance.md), [training refresh](docs/training.md), [pilot procedure](docs/pilot.md) and [release notes](docs/release-notes.md)

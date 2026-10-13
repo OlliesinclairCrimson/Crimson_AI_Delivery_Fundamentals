@@ -25,7 +25,7 @@ code { font: .9em var(--mono); overflow-wrap: anywhere; }
 [hidden] { display: none !important; }
 .measure, .sec-head p { max-width: 72ch; }
 .brandbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding-bottom: 22px; }
-.wordmark { color: var(--crimson); font: bold 2rem var(--display); }
+.wordmark { display: block; width: 180px; max-width: 100%; height: auto; }
 .meta { color: var(--muted); font-size: .9rem; }
 .hero { color: white; background: linear-gradient(130deg, #7f0011, #a80017 65%, #003a4b); border-radius: 22px; padding: clamp(28px, 5vw, 56px); display: grid; gap: 24px; }
 .hero .lead { max-width: 65ch; font-size: 1.13rem; }

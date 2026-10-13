@@ -114,6 +114,8 @@ test("all pre-rendered pages have complete content, unique IDs and valid copy ta
     for (const match of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(match[1]), `Missing anchor ${match[1]}`);
     assert.doesNotMatch(html, /<!-- (?:WORKLOADS|SETUP|SOURCES|FILTERS|LIFECYCLE) -->/);
     assert.match(html, /Reference release, not blanket client approval/);
+    assert.match(html, /<p>Based on Playbook by Nicholas Rowan<\/p>/);
+    assert.match(html, /<img class="wordmark" src="assets\/crimson-wordmark\.svg" alt="Crimson" width="1612" height="254">/);
     assert.doesNotMatch(html, /fonts\.googleapis|<iframe|<video/);
   }
 });
@@ -176,14 +178,15 @@ test("active and alternative MCP examples specify the same server in host-specif
 
 test("complete distributable includes the template ZIP and all three adapter routes", async () => {
   const zip = unzipSync(await readFile(join(directory, "downloads", `crimson-reference-v${release.version}.zip`)));
-  for (const filename of ["index.html", "copilot-cli.html", "copilot-vscode.html", "claude-code.html", "README.txt", ".nojekyll", "downloads/crimson-client-template.zip", "docs/publication.md", "docs/review.md", "templates/client-repo/.mcp.json"]) {
+  for (const filename of ["index.html", "copilot-cli.html", "copilot-vscode.html", "claude-code.html", "assets/crimson-wordmark.svg", "README.txt", ".nojekyll", "downloads/crimson-client-template.zip", "docs/publication.md", "docs/review.md", "templates/client-repo/.mcp.json"]) {
     assert.ok(zip[filename], `Reference ZIP missing ${filename}`);
   }
   assert.match(new TextDecoder().decode(zip["README.txt"]), /pre-built static reference/);
+  assert.deepEqual(zip["assets/crimson-wordmark.svg"], new Uint8Array(await readFile(join(projectRoot, "assets", "crimson-wordmark.svg"))));
 });
 
 test("preview serves HTML, JavaScript and a downloadable ZIP with correct headers", async () => {
-  for (const [path, type] of [["/", "text/html"], ["/app.js", "text/javascript"], ["/downloads/crimson-client-template.zip", "application/zip"]]) {
+  for (const [path, type] of [["/", "text/html"], ["/app.js", "text/javascript"], ["/assets/crimson-wordmark.svg", "image/svg+xml"], ["/downloads/crimson-client-template.zip", "application/zip"]]) {
     const response = await fetch(baseUrl + path);
     assert.equal(response.status, 200);
     assert.ok(response.headers.get("content-type").startsWith(type));
