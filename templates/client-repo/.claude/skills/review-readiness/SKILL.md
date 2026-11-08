@@ -13,5 +13,6 @@ Read AGENTS.md and the accepted story. Do not approve, merge or publish your own
 4. Check each criterion has evidence; list failures and unrun checks.
 5. Describe risk, environment variables, connection references, rollback and support ownership.
 6. Prepare the PR using .github/PULL_REQUEST_TEMPLATE.md.
+7. Link gate/tool approvals, scan/evaluation evidence, release/runbook readiness and any exception's scope, authorized approver, compensating controls and expiry. Keep independent human review separate from the author.
 
 Return ready or blocked, with concrete reasons. An agent review supplements but never substitutes for the named human reviewer.

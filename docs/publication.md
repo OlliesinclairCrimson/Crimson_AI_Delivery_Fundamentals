@@ -1,6 +1,6 @@
 # Publish and adopt the reference
 
-Version 0.1.0 is a documentation-checked reference package, not a certification of client-tenant setup or an approved company policy. Publication and client-operation approval are separate decisions.
+Version 0.2.0 is a reference package with per-source documentation dates, not a certification of client-tenant setup or an approved company policy. Publication and client-operation approval are separate decisions.
 
 ## Build the distributable
 
@@ -13,7 +13,7 @@ npm run check
 
 Publish the contents of dist. It includes the pre-rendered site, tool-specific pages, all reference docs, the browsable template and downloads/crimson-client-template.zip. The template ZIP includes dotfiles and skills.
 
-The complete publication archive is dist/downloads/crimson-reference-v0.1.0.zip. It is already built: extract it into the approved static host; Node/npm are not needed to serve those files. Rebuilding and running the bundled local preview commands require the source repository, not just the publication ZIP.
+The complete publication archive is dist/downloads/crimson-reference-v0.2.0.zip. It is already built: extract it into the approved static host; Node/npm are not needed to serve those files. Rebuilding and running the bundled local preview commands require the source repository, not just the publication ZIP.
 
 To preview:
 
@@ -45,6 +45,9 @@ The site has no analytics, remote fonts or embedded third-party resources. Exter
 - [ ] Version, checked date, support boundaries and the route for reporting errors are visible.
 - [ ] The original videos are not represented as current Copilot or neutral setup.
 - [ ] Client setup/pilot evidence is described honestly as not yet completed centrally.
+- [ ] First-time readers see equal, unselected tool choices; saved and explicit routes work without implying a preferred agent.
+- [ ] Platform guides, lifecycle/tool/assurance records and all new client templates are present in the publication and starter archives.
+- [ ] Draft-derived controls are distinguished from actual approved policy and source-specific check dates are visible.
 
 Publish as a reference only with those limitations visible. Before describing an adapter as tenant-validated operating guidance, complete its per-tool DEV setup record and get accountable approval.
 

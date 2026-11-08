@@ -3,7 +3,7 @@ import { after, before, test } from "node:test";
 import { readFile, stat } from "node:fs/promises";
 import { join, resolve } from "node:path";
 import { unzipSync } from "fflate";
-import { families, release, setupSteps, sources, stages, workloads } from "../data.js";
+import { families, lifecycleGates, release, setupSteps, sources, stages, workloads } from "../data.js";
 import { adapterLabel, escapeHtml, filteredWorkloads, normalizeSelection, setupHtml, sourceLink, workloadHtml } from "../render.js";
 import { buildSite, collectFiles, projectRoot, renderPage } from "../scripts/build.mjs";
 import { createPreviewServer } from "../scripts/serve.mjs";
@@ -25,11 +25,12 @@ before(async () => {
 });
 after(async () => { if (server) await new Promise(resolveClose => server.close(resolveClose)); });
 
-test("preserves seven stages, thirteen workloads and six families", () => {
+test("preserves seven stages and original workloads while adding five platform routes", () => {
   assert.equal(stages.length, 7);
-  assert.equal(workloads.length, 13);
+  assert.equal(workloads.length, 18);
   assert.equal(Object.keys(families).length, 6);
-  assert.equal(new Set(workloads.map(item => item.id)).size, 13);
+  assert.equal(new Set(workloads.map(item => item.id)).size, workloads.length);
+  for (const id of ["canvas", "model", "generative", "code", "pages", "mobile", "cloud-flows", "desktop-flows", "studio", "dataverse", "alm", "plugins", "pcf", "azure", "foundry", "fabric", "dynamics-ce", "dynamics-fo"]) assert.ok(workloads.some(item => item.id === id));
   for (const stage of stages) for (const key of ["agent", "human", "output", "gate"]) assert.ok(stage[key]);
 });
 
@@ -43,7 +44,9 @@ test("every workload and setup step has all three documented adapter routes", ()
 });
 
 test("normalizes invalid preferences without inventing adapter values", () => {
-  assert.deepEqual(normalizeSelection("unknown", "unknown"), selections[0]);
+  assert.deepEqual(normalizeSelection("unknown", "unknown"), { tool: null, surface: "cli" });
+  assert.deepEqual(normalizeSelection("copilot", "unknown"), { tool: null, surface: "cli" });
+  assert.deepEqual(normalizeSelection("claudeCode", undefined), { tool: null, surface: "cli" });
   assert.deepEqual(normalizeSelection("copilot", "vscode"), selections[2]);
   assert.equal(adapterLabel(selections[1]), "GitHub Copilot CLI");
 });
@@ -55,8 +58,8 @@ test("rendering escapes markup, quotes and ampersands", () => {
 test("tool switching keeps all verification requirements identical", () => {
   const extract = html => [...html.matchAll(/<dd data-verification>(.*?)<\/dd>/g)].map(match => match[1]);
   const baseline = extract(workloadHtml(selections[0]));
-  assert.equal(baseline.length, 13);
-  for (const selection of selections.slice(1)) assert.deepEqual(extract(workloadHtml(selection)), baseline);
+  assert.equal(baseline.length, workloads.length);
+  for (const selection of [...selections.slice(1), { tool: null, surface: "cli" }]) assert.deepEqual(extract(workloadHtml(selection)), baseline);
 });
 
 test("CLI plugins are not represented as ordinary VS Code slash-command installs", () => {
@@ -75,7 +78,7 @@ test("permissions guidance distinguishes asking from denying and does not enable
 });
 
 test("filtering handles families, case, whitespace and empty matches", () => {
-  assert.equal(filteredWorkloads("all").length, 13);
+  assert.equal(filteredWorkloads("all").length, workloads.length);
   assert.equal(filteredWorkloads("automation").length, 2);
   assert.equal(filteredWorkloads("all", "  CLOUD FLOWS ").at(0).id, "cloud-flows");
   assert.equal(filteredWorkloads("apps", "cloud flows").length, 0);
@@ -106,7 +109,7 @@ test("build refuses missing content markers and unsafe output directories", asyn
 test("all pre-rendered pages have complete content, unique IDs and valid copy targets", async () => {
   for (const filename of ["index.html", "claude-code.html", "copilot-cli.html", "copilot-vscode.html"]) {
     const html = await readFile(join(directory, filename), "utf8");
-    assert.equal([...html.matchAll(/data-workload="/g)].length, 13);
+    assert.equal([...html.matchAll(/data-workload="/g)].length, workloads.length);
     assert.equal([...html.matchAll(/class="setup-step"/g)].length, 7);
     const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
     assert.equal(ids.length, new Set(ids).size, `${filename}: duplicate id`);
@@ -127,6 +130,91 @@ test("static Copilot pages contain the correct initial tool and setup route", as
   assert.match(cli, /winget install GitHub.Copilot/);
   assert.match(vscode, /data-tool="copilot" data-surface="vscode"/);
   assert.match(vscode, /false command rule asks for approval/);
+});
+
+test("index has no preferred or implicit adapter while explicit routes remain selected", async () => {
+  const html = await readFile(join(directory, "index.html"), "utf8");
+  assert.match(html, /data-tool="" data-surface="cli"/);
+  assert.equal([...html.matchAll(/data-tool="(?:claudeCode|copilot)" aria-pressed="true"/g)].length, 0);
+  assert.doesNotMatch(html, /data-adapter|winget install|\/plugin install/);
+  assert.match(html, /Neither is preferred/);
+  assert.equal([...html.matchAll(/data-verification/g)].length, workloads.length);
+  assert.equal([...html.matchAll(/class="setup-step"/g)].length, setupSteps.length);
+  const claude = await readFile(join(directory, "claude-code.html"), "utf8");
+  assert.match(claude, /data-tool="claudeCode"/);
+  assert.match(claude, /winget install Anthropic.ClaudeCode/);
+});
+
+test("G0-G9 mapping places readiness before build and operation before production", () => {
+  assert.deepEqual(lifecycleGates.map(gate => gate.id), Array.from({ length: 10 }, (_, i) => `G${i}`));
+  for (const gate of lifecycleGates) {
+    assert.ok(stages.some(stage => stage.title === gate.stage));
+    assert.ok(gate.evidence);
+  }
+  assert.equal(lifecycleGates[3].stage, "Build");
+  assert.match(lifecycleGates[3].evidence, /before implementation/);
+  assert.equal(lifecycleGates[5].stage, "Verify");
+  assert.match(lifecycleGates[5].evidence, /Delivered-AI/);
+  assert.equal(lifecycleGates[7].stage, "Release");
+  assert.match(lifecycleGates[7].evidence, /before production/);
+});
+
+test("new platform guides have all harness routes and truthful native-tool boundaries", async () => {
+  for (const guide of new Set(workloads.filter(workload => workload.guide).map(workload => workload.guide))) {
+    const content = await readFile(join(projectRoot, ...guide.split("/")), "utf8");
+    for (const route of ["Claude Code", "Copilot CLI", "Copilot in VS Code"]) assert.ok(content.includes(route), `${guide}: missing ${route}`);
+    assert.match(content, /8 November 2026/);
+    assert.match(content, /[Nn]o live|not a live/);
+    assert.match(content, /[Hh]uman|[Pp]erson/);
+    assert.doesNotMatch(content, /--allow-all|--dangerously-skip|\/yolo/);
+  }
+  const dynamics = await readFile(join(projectRoot, "docs", "platforms", "dynamics-365.md"), "utf8");
+  assert.match(dynamics, /PAC is not an X\+\+ compiler/);
+  assert.match(dynamics, /System Administrator/);
+  assert.match(dynamics, /not permission to elevate/);
+});
+
+test("new assurance records are packaged and require approval and actual evidence", async () => {
+  const zip = unzipSync(await readFile(join(directory, "downloads", "crimson-client-template.zip")));
+  for (const path of ["governance/tool-register.md", "governance/lifecycle-gates.md", "governance/release-readiness.md", "governance/exception-template.md", "governance/prototype-graduation.md", "responsible-ai/agent-assurance.md"]) {
+    assert.ok(zip[`client-repo/docs/${path}`], `Missing ${path}`);
+  }
+  const decode = path => new TextDecoder().decode(zip[`client-repo/docs/${path}`]);
+  const tool = decode("governance/tool-register.md");
+  for (const field of ["Accountable owner", "source URL", "Version", "Maturity", "Approval status", "Data classification", "Permission scope", "Threat", "expiry"]) assert.ok(tool.includes(field), `Tool register missing ${field}`);
+  assert.match(decode("governance/exception-template.md"), /Expiry/);
+  const ai = decode("responsible-ai/agent-assurance.md");
+  for (const field of ["Measurable acceptance threshold", "Prompt injection", "exact target and parameters", "Kill switch", "Re-evaluation triggers"]) assert.ok(ai.includes(field));
+  assert.match(ai, /not solely because AI helped/);
+  assert.match(decode("governance/lifecycle-gates.md"), /Not applicable requires a recorded rationale/);
+});
+
+test("all local Markdown links resolve within the packaged documents", async () => {
+  const files = await collectFiles(directory);
+  for (const [filename, bytes] of Object.entries(files)) {
+    if (!filename.endsWith(".md")) continue;
+    const content = new TextDecoder().decode(bytes);
+    for (const match of content.matchAll(/\[[^\]]+\]\(([^)]+)\)/g)) {
+      const link = match[1];
+      if (/^(?:https?:|#)/.test(link)) continue;
+      const target = resolve(directory, ...filename.split("/").slice(0, -1), ...link.split("#")[0].split("/"));
+      await assert.doesNotReject(stat(target), `${filename}: missing ${link}`);
+    }
+  }
+});
+
+test("release metadata and source dates do not relabel historical checks", async () => {
+  const pkg = JSON.parse(await readFile(join(projectRoot, "package.json"), "utf8"));
+  const lock = JSON.parse(await readFile(join(projectRoot, "package-lock.json"), "utf8"));
+  assert.equal(pkg.version, release.version);
+  assert.equal(lock.version, release.version);
+  assert.equal(lock.packages[""].version, release.version);
+  const sourceRegister = await readFile(join(directory, "docs", "sources.md"), "utf8");
+  assert.match(sourceRegister, /Checked 2026-10-13/);
+  assert.match(sourceRegister, /Checked 2026-11-08/);
+  const alignment = await readFile(join(projectRoot, "docs", "standard-alignment.md"), "utf8");
+  assert.match(alignment, /Deliberately exclude GitHub Copilot preference/);
+  assert.match(alignment, /draft v0.9/);
 });
 
 test("all local HTML links, script and stylesheet targets are packaged", async () => {
@@ -181,6 +269,7 @@ test("complete distributable includes the template ZIP and all three adapter rou
   for (const filename of ["index.html", "copilot-cli.html", "copilot-vscode.html", "claude-code.html", "assets/crimson-wordmark.svg", "README.txt", ".nojekyll", "downloads/crimson-client-template.zip", "docs/publication.md", "docs/review.md", "templates/client-repo/.mcp.json"]) {
     assert.ok(zip[filename], `Reference ZIP missing ${filename}`);
   }
+  for (const filename of ["docs/agentic-development.md", "docs/standard-alignment.md", "docs/prototype-graduation.md", "docs/platforms/azure.md", "docs/platforms/microsoft-foundry.md", "docs/platforms/fabric.md", "docs/platforms/dynamics-365.md"]) assert.ok(zip[filename], `Reference ZIP missing ${filename}`);
   assert.match(new TextDecoder().decode(zip["README.txt"]), /pre-built static reference/);
   assert.deepEqual(zip["assets/crimson-wordmark.svg"], new Uint8Array(await readFile(join(projectRoot, "assets", "crimson-wordmark.svg"))));
 });

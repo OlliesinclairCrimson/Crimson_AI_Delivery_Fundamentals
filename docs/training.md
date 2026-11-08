@@ -1,4 +1,4 @@
-# Setup recordings: v0.1 treatment
+# Setup recordings and written onboarding
 
 The attached developer playbook supplied seven Claude-specific narrated MP4s and poster images. They remain in the original ZIP; they are not included as authoritative setup instructions in this release.
 
@@ -25,3 +25,11 @@ Written, source-linked setup steps are the current onboarding path. No Copilot r
 - Remove/retire stale clips when instructions change.
 
 Replacement recordings require a real approved demonstration environment and a training owner. They are a follow-on media task, not a prerequisite for publishing the clearly labelled written reference.
+
+## v0.2 written route
+
+Start with an explicit equal choice of Claude Code or GitHub Copilot; no first-time adapter is selected. Complete the tool register and approved execution boundaries before the relevant setup route. Explain engineering agents versus delivered agents, G0-G9 applicability, release authority and prototype graduation.
+
+Use the detailed Azure, Foundry, Fabric and Dynamics guides for their native prerequisites and separate identity checks. Finance/Supply Chain uses Visual Studio/X++ tooling, not a universal PAC route. Demonstrate local fixtures and human-approved read-only DEV checks; model/evaluation runs, Git sync and privileged setup need separate authorization.
+
+The new platform documentation check does not certify either harness in a customer tenant. Keep original recordings and old validation dates historical; replacements remain unproduced.

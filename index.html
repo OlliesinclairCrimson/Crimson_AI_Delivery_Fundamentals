@@ -10,7 +10,7 @@ FORM: Preserve the supplied single-page reference structure; add synchronized se
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Crimson's tool-neutral reference for agentic delivery: fundamentals, lifecycle, Power Platform workloads, Claude Code and GitHub Copilot setup, and shared client templates.">
+  <meta name="description" content="Crimson's tool-neutral agentic delivery reference: human-owned gates, Claude Code and GitHub Copilot, Power Platform, Azure, Foundry, Fabric, Dynamics 365 and reusable assurance templates.">
   <meta name="theme-color" content="#003a4b">
   <title>Crimson AI Delivery Fundamentals</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
@@ -23,7 +23,7 @@ FORM: Preserve the supplied single-page reference structure; add synchronized se
     <div class="brandbar">
       <img class="wordmark" src="assets/crimson-wordmark.svg" alt="Crimson" width="1612" height="254">
       <div class="meta">
-        <p>AI Delivery Fundamentals <span aria-hidden="true">&middot;</span> v0.1 <span aria-hidden="true">&middot;</span> 13 October 2026</p>
+        <p>AI Delivery Fundamentals <span aria-hidden="true">&middot;</span> v0.2 <span aria-hidden="true">&middot;</span> 8 November 2026</p>
         <p>Based on Playbook by Nicholas Rowan</p>
       </div>
     </div>
@@ -52,11 +52,11 @@ FORM: Preserve the supplied single-page reference structure; add synchronized se
       <section id="overview" aria-labelledby="overview-title">
         <div class="sec-head">
           <h2 id="overview-title">The playbook on one page</h2>
-          <p>The agent helps with analysis, design, build and verification. People own the backlog, architecture, acceptance and releases. Power Platform is the initial worked example; the fundamentals apply to other engineering stacks too.</p>
+          <p>The agent helps with analysis, design, build and verification. People own the backlog, architecture, acceptance and releases. Claude Code and GitHub Copilot are equal choices within the same controls. Power Platform, Azure, Microsoft Foundry, Fabric and Dynamics 365 have workload-specific routes.</p>
         </div>
         <div class="notice">
           <strong>Reference release, not blanket client approval.</strong>
-          <p>Tool guidance was checked against first-party documentation on 13 October 2026. Your engagement lead must confirm client policy, licensing, identity and DEV access. A documentation check is not a live tenant validation.</p>
+          <p>New platform guidance was checked on 8 November 2026; existing adapter instructions retain their 13 October review date. Check each source and your actual host. The supplied agentic standard is draft v0.9, not evidence of approved Crimson policy. Your engagement lead must approve tools, data and DEV access. No live tenant validation is claimed.</p>
         </div>
         <div class="two">
           <article class="panel">
@@ -87,6 +87,7 @@ FORM: Preserve the supplied single-page reference structure; add synchronized se
           <article class="layer mid"><h3>Shared repo assets</h3><p>One <code>AGENTS.md</code>, reusable <code>SKILL.md</code> files, story and evidence templates.</p><p class="who">Write once. Review together.</p></article>
           <article class="layer"><h3>Tool adapters</h3><p>Install, sign in, configure MCP, manage permissions and understand limitations.</p><p class="who">Short, versioned and replaceable.</p></article>
         </div>
+        <p class="measure"><a href="docs/agentic-development.md">Agentic development and control hierarchy</a> explains harnesses, skills, tools and human accountability. <a href="docs/standard-alignment.md">Paper alignment</a> records what was adopted and why no preferred-agent policy was imported.</p>
       </section>
       <section id="fundamentals" aria-labelledby="fundamentals-title">
         <div class="sec-head"><h2 id="fundamentals-title">Six fundamentals. Every engagement.</h2><p>These do not depend on an agent brand, model or IDE.</p></div>
@@ -101,7 +102,7 @@ FORM: Preserve the supplied single-page reference structure; add synchronized se
         <div class="notice"><strong>Guidance is not enforcement.</strong><p>Instructions influence behavior; identity, environment access and tool permissions constrain it. A deny rule for one command cannot stop equivalent API or MCP operations. A branch does not isolate changes to a live DEV environment.</p></div>
       </section>
       <section id="lifecycle" aria-labelledby="lifecycle-title">
-        <div class="sec-head"><h2 id="lifecycle-title">From idea to production</h2><p>Seven stages, each with a human owner and an explicit sign-off. Return to an earlier stage when scope, risk or assumptions change.</p></div>
+        <div class="sec-head"><h2 id="lifecycle-title">From idea to retirement</h2><p>Seven stages with G0&ndash;G9 evidence gates. Build readiness comes before implementation; release and operational readiness come before production use. AI assurance applies to delivered AI, not simply to code written with an assistant.</p></div>
         <ol class="life" id="life"><!-- LIFECYCLE --></ol>
         <div class="backlog">
           <h3>The agent helps the backlog. It does not own it.</h3>
@@ -119,7 +120,7 @@ FORM: Preserve the supplied single-page reference structure; add synchronized se
           <article class="panel"><h3>Claude Projects</h3><p>Use an approved Project per engagement for curated client context and reviewed discovery outputs. Check the client's agreement for third-party processing, connectors, retention and residency before uploading material.</p><p>Project knowledge is not a guarantee of repository instruction or skill loading.</p></article>
           <article class="panel"><h3>Microsoft 365 Copilot</h3><p>Evaluate notebooks or agents available under the client's tenant policy and licences. Agree permitted SharePoint, Teams, email and other sources before use; apply client access and retention controls.</p><p>Availability and behavior vary. Do not assume feature parity with Claude Projects.</p></article>
         </div>
-        <p class="measure"><strong>The same rules apply:</strong> load only approved context; keep clients separate; obtain written approval before Microsoft 365 data is used; validate claims and citations; have the product owner review outputs. Store agreed briefs, stories and decisions in the team's approved system of record.</p>
+        <p class="measure"><strong>The same rules apply:</strong> load only approved context; keep clients separate; obtain written approval before Microsoft 365 data is used; validate claims and citations; have the product owner review outputs. Store agreed briefs, stories and decisions in the approved GitHub repository. A useful or shared prototype is not production-ready: follow <a href="docs/prototype-graduation.md">prototype graduation</a>.</p>
       </section>
       <section id="workloads" aria-labelledby="workloads-title">
         <div class="sec-head"><h2 id="workloads-title">Choose the workload, then the tool</h2><p>Purpose, platform tooling and verification stay the same. Switch the adapter to see the matching development route. Built-in Power Platform Copilot features are alternatives, not GitHub Copilot setup.</p></div>
@@ -129,7 +130,7 @@ FORM: Preserve the supplied single-page reference structure; add synchronized se
           <div id="chips" class="chips" role="group" aria-label="Filter workload family"><!-- FILTERS --></div>
           <label class="search-label">Find a workload <input id="workload-search" type="search" placeholder="e.g. cloud flows" autocomplete="off"></label>
         </div>
-        <p id="workload-count" class="meta" role="status" aria-live="polite">13 workloads</p>
+        <p id="workload-count" class="meta" role="status" aria-live="polite">18 workloads</p>
         <div class="wl-grid" id="workload-grid"><!-- WORKLOADS --></div>
         <p id="no-workloads" class="notice" hidden>No workloads match. Clear the search or select All.</p>
       </section>
@@ -137,7 +138,7 @@ FORM: Preserve the supplied single-page reference structure; add synchronized se
         <div class="sec-head"><h2 id="setup-title">Set up for a controlled first story</h2><p>Complete the shared checks, then follow the selected adapter. Commands marked "inside the agent" are not PowerShell commands.</p></div>
         <!-- SETUP_SELECTORS -->
         <noscript><p class="notice">Choose the pre-rendered setup route: <a href="claude-code.html#setup">Claude Code</a>, <a href="copilot-cli.html#setup">Copilot CLI</a> or <a href="copilot-vscode.html#setup">Copilot in VS Code</a>.</p></noscript>
-        <div class="notice"><strong>Written guidance is the v0.1 onboarding path.</strong><p>The seven original recordings describe Claude-specific setup and older tooling. They are not included as current instructions for either tool. <a href="docs/training.md">See the recording replacement checklist</a>.</p></div>
+        <div class="notice"><strong>Choose a tool; keep the same controls.</strong><p>Neither agent is selected for a first-time reader. The original recordings describe older Claude-specific tooling, not current onboarding for either tool. <a href="docs/training.md">See the training checklist</a>. New workload cards link detailed platform-native setup routes; selecting an agent does not install or authorize them.</p></div>
         <ol class="setup-list" id="setup-list"><!-- SETUP --></ol>
         <details class="admin-check">
           <summary>Administrator checklist: Dataverse MCP</summary>
@@ -176,24 +177,28 @@ FORM: Preserve the supplied single-page reference structure; add synchronized se
     vscode-mcp.json          # alternative, not a second active config
   solutions\  agents\  src\
   docs\
-    glossary.md  adr\  stories\  evidence\</pre></div>
+    glossary.md  adr\  stories\  evidence\
+    governance\              # tools, gates, release, exceptions, graduation
+    responsible-ai\          # delivered-agent assurance</pre></div>
           <article class="panel"><h3>Write the rules once</h3><p><code>AGENTS.md</code> holds permitted environments, standards, glossary references, approval boundaries and definition of done. <code>CLAUDE.md</code> imports it. The Copilot bridge points to it; confirm which instructions actually loaded.</p><p>Team skills live in <code>.claude/skills</code>, a supported location for all three documented routes. Skills are loaded on relevance; check actual invocation.</p><p>The portable MCP example includes only public Microsoft Learn. Add Dataverse through approved setup. The alternate VS Code-format example belongs in <code>.vscode/mcp.json</code> only if your chosen host needs it; avoid duplicate active definitions.</p></article>
         </div>
         <div class="two">
           <article class="panel"><h3>Reusable team skills</h3><ul><li>Story readiness and testable criteria</li><li>Architecture decisions and licensing/cost checks</li><li>Verification evidence and role-based checks</li><li>PR review readiness</li><li>Retrospective learning</li></ul><p>Skills are guidance, not permissions. None pre-approves shell tools.</p></article>
           <article class="panel"><h3>Copyable working documents</h3><ul><li><a href="templates/client-repo/docs/stories/story-template.md">Story and acceptance criteria</a></li><li><a href="templates/client-repo/docs/adr/decision-template.md">Architecture decision record</a></li><li><a href="templates/client-repo/docs/evidence/evidence-template.md">Verification evidence pack</a></li><li><a href="templates/client-repo/docs/evidence/setup-validation.md">Per-tool setup validation</a></li><li><a href="templates/client-repo/docs/evidence/pilot-scorecard.csv" download>Tool pilot scorecard (CSV)</a></li></ul></article>
         </div>
+        <article class="panel"><h3>Reusable assurance records</h3><p>Complete the <a href="templates/client-repo/docs/governance/tool-register.md">tool register</a>, <a href="templates/client-repo/docs/governance/lifecycle-gates.md">lifecycle gates</a> and <a href="templates/client-repo/docs/governance/release-readiness.md">release readiness</a>. Use <a href="templates/client-repo/docs/responsible-ai/agent-assurance.md">delivered-agent assurance</a> for AI solutions, <a href="templates/client-repo/docs/governance/prototype-graduation.md">graduation</a> for prototypes and <a href="templates/client-repo/docs/governance/exception-template.md">expiring exception records</a> for approved deviations. Templates record decisions; they do not grant authority.</p></article>
       </section>
       <section id="governance" aria-labelledby="governance-title">
         <div class="sec-head"><h2 id="governance-title">Before any client work</h2><p>These checks belong to the engagement, not just the developer's machine.</p></div>
         <ul class="watch">
           <li><h3>Approval and data</h3><p>Record permitted AI products, models, connectors and data classes. Confirm the client's AI policy, retention, residency, contractual requirements and Microsoft 365 data approval. Use synthetic data unless approved otherwise.</p></li>
           <li><h3>Identity and boundaries</h3><p>Use a DEV-only, least-privilege identity. Inspect PAC, Azure CLI, MCP OAuth, browser sessions, environment variables and cached credentials. Do not elevate the agent to bypass a failed operation.</p></li>
-          <li><h3>Untrusted content</h3><p>Treat prompts in retrieved documents, tool outputs and dependencies as data, not authority. Review plugins and MCP server publishers, pin approved versions where supported and inspect updates.</p></li>
+          <li><h3>Untrusted content and tools</h3><p>Treat documents, issue text, tool outputs and dependencies as data, not authority. Record each tool's owner, source/version, maturity, approval status, data scope and permitted actions. Validate parameters and outputs independently; bind consequential approvals to the exact actor, action, target and parameters.</p></li>
           <li><h3>Cost and licensing</h3><p>Confirm developer subscriptions, platform licences and tenant consumption. Set budgets, alerts and caps where supported. Separate subscription allocation from per-story usage cost.</p></li>
           <li><h3>Reviewable source</h3><p>Export or synchronize low-code changes into source and review the diff before promotion. Store solution-owned assets in solutions; review application code and infrastructure in their own source folders.</p></li>
           <li><h3>Release and operation</h3><p>People approve TEST and PROD promotion through the agreed ALM route. Record rollback, support ownership and monitoring. Never give an agent permission to self-approve, merge or promote its own change.</p></li>
         </ul>
+        <p class="measure"><strong>Enforce outside the prompt:</strong> administrators configure protected branches, independent human review, required checks, sensitive-area code owners and available scanning or approved equivalents. Restrict filesystem/network scope and isolate unattended execution. Keep sanitized tool/approval audit evidence, never secrets. <a href="docs/agentic-development.md">Read the control guidance</a>.</p>
         <div class="tablewrap"><table><caption>Accountability stays with people</caption><thead><tr><th scope="col">Role</th><th scope="col">Owns</th><th scope="col">Never delegates</th></tr></thead><tbody>
           <tr><th scope="row">Product owner</th><td>Problem, value, backlog and story acceptance</td><td>Priority and acceptance decisions</td></tr>
           <tr><th scope="row">Consultant / developer</th><td>Context, implementation, verification and reviewable source</td><td>Checking claims and collecting evidence</td></tr>
@@ -223,7 +228,7 @@ FORM: Preserve the supplied single-page reference structure; add synchronized se
       <p>One ready story, one approved DEV boundary, one reviewed change. Build confidence through the delivery loop, not through broader agent permissions.</p>
       <a href="docs/publication.md">Publication and adoption checklist</a>
     </aside>
-    <footer><span>Crimson AI Delivery Fundamentals &middot; Reference v0.1</span><a href="#overview">Back to essentials</a><a href="docs/release-notes.md">Release notes</a></footer>
+    <footer><span>Crimson AI Delivery Fundamentals &middot; Reference v0.2</span><a href="#overview">Back to essentials</a><a href="docs/release-notes.md">Release notes</a></footer>
   </div>
   <p id="interaction-status" class="sr-only" role="status" aria-live="polite"></p>
 </body>

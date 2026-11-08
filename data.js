@@ -1,4 +1,4 @@
-export const release = { version: "0.1.0", reviewed: "2026-10-13" };
+export const release = { version: "0.2.0", reviewed: "2026-11-08" };
 export const sources = [
   { id: "platform-skills", title: "Microsoft Power Platform skills marketplace", url: "https://github.com/microsoft/power-platform-skills", note: "Plugin routes and workload prerequisites for Claude Code and Copilot CLI." },
   { id: "dataverse", title: "Microsoft Dataverse skills", url: "https://github.com/microsoft/Dataverse-skills", note: "Connection setup, capabilities and alternate distribution routes." },
@@ -22,7 +22,30 @@ export const sources = [
   { id: "vscode-mcp", title: "VS Code MCP setup", url: "https://code.visualstudio.com/docs/agent-customization/mcp-servers", note: "Portable .mcp.json and alternate .vscode/mcp.json; Agent Host differences." },
   { id: "vscode-approvals", title: "VS Code approvals and permissions", url: "https://code.visualstudio.com/docs/agents/run/approvals", note: "False auto-approval rules require approval; they do not deny commands." },
   { id: "studio-skills", title: "Skills for Copilot Studio: standard agents", url: "https://github.com/microsoft/skills-for-copilot-studio", note: "Experimental research plugin. CLI marketplaces and VS Code agent-plugin route." },
-  { id: "studio-successor", title: "Copilot Studio authoring plugin: GHCP harness", url: "https://github.com/microsoft/copilot-studio-plugin", note: "Work-in-progress successor for a different harness; requires PAC 2.9.3+." }
+  { id: "studio-successor", title: "Copilot Studio authoring plugin: GHCP harness", url: "https://github.com/microsoft/copilot-studio-plugin", note: "Work-in-progress successor for a different harness; requires PAC 2.9.3+." },
+  { id: "azure-cli", title: "Azure CLI on Windows", url: "https://learn.microsoft.com/cli/azure/install-azure-cli-windows", reviewed: "2026-11-08", note: "Official installation, interactive sign-in and account inspection; not client authorization." },
+  { id: "bicep", title: "Bicep CLI commands", url: "https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-cli", reviewed: "2026-11-08", note: "Local compilation is separate from resource deployment." },
+  { id: "foundry-project", title: "Create a Microsoft Foundry project", url: "https://learn.microsoft.com/azure/foundry/how-to/create-projects", reviewed: "2026-11-08", note: "Project prerequisites, roles and portal routes; creation requires separate approval." },
+  { id: "foundry-sdk", title: "Microsoft Foundry Python SDK", url: "https://learn.microsoft.com/python/api/overview/azure/ai-projects-readme", reviewed: "2026-11-08", note: "Python prerequisites, Entra authentication and project endpoint; stable packages can contain preview features." },
+  { id: "foundry-evaluation", title: "Evaluate Foundry agents", url: "https://learn.microsoft.com/azure/foundry/observability/how-to/evaluate-agent", reviewed: "2026-11-08", note: "Agent-targeted evaluations and acceptance thresholds; execution can incur charges." },
+  { id: "foundry-tracing", title: "Set up Foundry tracing", url: "https://learn.microsoft.com/azure/foundry/observability/how-to/trace-agent-setup", reviewed: "2026-11-08", note: "Application Insights connection, trace verification, privacy and feature-specific preview boundaries." },
+  { id: "fabric-git", title: "Fabric Git integration setup", url: "https://learn.microsoft.com/fabric/cicd/git-integration/git-get-started", reviewed: "2026-11-08", note: "Capacity, tenant switches, admin connection and sync direction; synchronization changes live workspace state." },
+  { id: "dynamics-tools", title: "Finance and operations development tools", url: "https://learn.microsoft.com/power-platform/developer/unified-experience/finance-operations-install-config-tools", reviewed: "2026-11-08", note: "Windows/Visual Studio, developer sandbox and X++ metadata; required administrative setup belongs to a person." },
+  { id: "claude-sandbox", title: "Claude Code shell sandbox", url: "https://code.claude.com/docs/en/sandboxing", reviewed: "2026-11-08", note: "Shell isolation does not cover file tools, hooks or MCP; native Windows commands are unsandboxed." },
+  { id: "nist-rmf", title: "NIST AI Risk Management Framework", url: "https://www.nist.gov/itl/ai-risk-management-framework", reviewed: "2026-11-08", note: "Voluntary risk-management guidance, not a legal obligation." }
+];
+
+export const lifecycleGates = [
+  { id: "G0", stage: "Discover", title: "Intake", evidence: "Owners, problem, value, data classification and risk tier." },
+  { id: "G1", stage: "Shape", title: "Architecture", evidence: "Placement, identity, data, integrations, NFRs, threat and cost assessment." },
+  { id: "G2", stage: "Design", title: "Specification", evidence: "Versioned scope, criteria, test strategy and autonomy boundaries." },
+  { id: "G3", stage: "Build", title: "Build readiness", evidence: "Approved repo, DEV identities, instructions, tools and required checks before implementation." },
+  { id: "G4", stage: "Verify", title: "Engineering assurance", evidence: "Independent human review, tests, scans and accessibility evidence." },
+  { id: "G5", stage: "Verify", title: "AI assurance", evidence: "Delivered-AI evaluations, tool authority, fallback and trace evidence; recorded applicability." },
+  { id: "G6", stage: "Release", title: "Release", evidence: "Acceptance, release authority, artifact, deployment and rollback evidence." },
+  { id: "G7", stage: "Release", title: "Operational readiness", evidence: "Support, runbook, monitoring, alerts and recovery ready before production use." },
+  { id: "G8", stage: "Run and improve", title: "Post-release", evidence: "Human-owned smoke checks, telemetry review, risks and handover." },
+  { id: "G9", stage: "Run and improve", title: "Retirement", evidence: "Human-owned access revocation, lawful retention/deletion, endpoint closure and archive." }
 ];
 
 export const stages = [
@@ -114,9 +137,50 @@ export const workloads = [
     verify: "Build and harness checks, accessibility, data-set behavior and each supported host app type.", warning: "Keep the declared support scope explicit: do not claim both canvas and model-driven compatibility without testing." }
 ];
 
+const platformRoute = (name, guide) => ({
+  claudeCode: `Use the shared ${name} platform-native route with approved shell permissions. No dedicated plugin installation is assumed.`,
+  copilot: {
+    cli: `Use the same ${name} platform-native route with ordinary tool approvals. No dedicated plugin installation is assumed.`,
+    vscode: `Use the same ${name} platform tools alongside the editor; verify the selected agent host's shell permissions. Native tools are not installed by choosing Copilot.`
+  },
+  guide
+});
+workloads.push(
+  { id: "azure", name: "Azure services and infrastructure", family: "pro", use: "APIs, integration, events and compute with source-controlled infrastructure.",
+    ...platformRoute("Azure CLI/Bicep", "docs/platforms/azure.md"), source: "azure-cli",
+    platform: "Azure CLI, Bicep and workload SDKs; approved DEV subscription/resource group.",
+    alternative: "Reuse a supported platform capability or human-managed Azure portal configuration.",
+    verify: "Local compile/tests, least-privilege context, threat model, resource configuration, telemetry and cost limits.",
+    warning: "Local compilation does not deploy. Resource creation, role assignment and TEST/PROD operations remain human-owned." },
+  { id: "foundry", name: "Microsoft Foundry", family: "agents", use: "Model-backed applications and agents needing controlled tools, evaluations and tracing.",
+    ...platformRoute("Foundry SDK/portal", "docs/platforms/microsoft-foundry.md"), source: "foundry-sdk",
+    platform: "Approved Foundry DEV project, Python SDK/Entra identity and Application Insights where used.",
+    alternative: "Copilot Studio where its supported capabilities meet the requirement.",
+    verify: "Representative evaluation thresholds, tool/approval tests, groundedness, failure fallback, sanitized traces and token/cost limits.",
+    warning: "Stable SDKs can include preview features. Model calls and evaluation runs can incur charges; project creation is not proof of readiness." },
+  { id: "fabric", name: "Microsoft Fabric", family: "data", use: "Analytics, lakehouse engineering, semantic models and governed BI.",
+    ...platformRoute("Fabric portal/Git", "docs/platforms/fabric.md"), source: "fabric-git",
+    platform: "Approved capacity, isolated DEV workspace, supported artifacts and admin-connected Git integration.",
+    alternative: "Reuse governed datasets/reports before adding new pipelines or workspaces.",
+    verify: "Source sync status, schema/data-quality checks, permissions, refresh/error paths and consumption limits.",
+    warning: "Git does not version every artifact or data. Sync changes live state; only people authorize connections and release-pipeline promotion." },
+  { id: "dynamics-ce", name: "Dynamics 365 customer engagement", family: "apps", use: "Dataverse-based business processes covered by supported Dynamics configuration.",
+    ...platformRoute("Dataverse/PAC", "docs/platforms/dynamics-365.md"), source: "pac",
+    platform: "Licensed DEV app, Dataverse, approved solutions/publisher, PAC and supported extension tooling.",
+    alternative: "Configure supported Dynamics features before custom extension.",
+    verify: "Solution source, business scenarios, security roles, checker, integration and upgrade compatibility.",
+    warning: "A developer license or coding agent entitlement does not grant Dynamics application access." },
+  { id: "dynamics-fo", name: "Dynamics 365 Finance / Supply Chain", family: "apps", use: "ERP configuration and supported extensions, including X++ where justified.",
+    ...platformRoute("Visual Studio/X++", "docs/platforms/dynamics-365.md"), source: "dynamics-tools",
+    platform: "Developer-focused sandbox, Windows/Visual Studio 2022, Finance and operations extension and version-matched metadata.",
+    alternative: "Supported ERP configuration and reuse before bespoke extension.",
+    verify: "Local X++ build, model dependencies, approved DEV functional tests, security, performance and upgrade checks.",
+    warning: "PAC is not a universal ERP compiler. Required privileged setup is performed by an authorized person; agent identity remains constrained." }
+);
+
 const publicMcp = '{\n  "mcpServers": {\n    "microsoft-learn": {\n      "type": "http",\n      "url": "https://learn.microsoft.com/api/mcp"\n    }\n  }\n}';
 export const setupSteps = [
-  { id: "approval", title: "Agree access and prepare the client repo", shared: "Record approved tools/models, data classes, budgets and DEV boundaries. Download the template, replace placeholders and review AGENTS.md with the engagement lead. Choose the required workload dependencies, not a blanket install.",
+  { id: "approval", title: "Agree access and prepare the client repo", shared: "Complete the tool register with owner, source/version, maturity, approval status, data/action scope and review evidence. Record budgets and DEV boundaries. Download the template, replace placeholders and obtain human approval. Neither coding agent is preferred; choose an approved route for this workload.",
     claudeCode: { text: "Confirm the approved Claude subscription and client permission for third-party processing. Start from the client repo, never your home directory.", source: "claude-install" },
     copilot: { cli: { text: "Confirm an active Copilot subscription, organization policy permitting CLI use and PowerShell 6+ on Windows. Do not assume a VS Code licence/policy automatically enables CLI.", source: "copilot-install" },
       vscode: { text: "Confirm the approved VS Code version, Copilot entitlement and tenant/organization policies. Open only the trusted client workspace.", source: "vscode-approvals" } },
@@ -148,7 +212,7 @@ export const setupSteps = [
     copilot: { cli: { text: "Run inside Copilot CLI. The same marketplace publishes the flow plugin; verify enabled skills and bundled MCP tools.", code: "/plugin marketplace add microsoft/power-platform-skills\n/plugin install power-automate@power-platform-skills", caption: "Inside Copilot CLI: cloud-flow example", source: "platform-skills" },
       vscode: { text: "Use approved Agent Plugins/marketplace support in your selected host. If a workload plugin is unavailable, use its Copilot CLI route alongside VS Code or the approved maker workflow. For standard Copilot Studio agents, the publisher documents @agentPlugins > Skills for Copilot Studio.", source: "vscode-plugins" } },
     check: "Record plugin versions, publisher and available operations. Treat the Copilot Studio standard plugin as experimental and evaluate its successor only for the matching harness." },
-  { id: "permissions", title: "Keep approvals on; verify the boundary", shared: "No global auto-approval or permission bypass is the baseline. Keep manual approvals for risky writes, publication and administration. Test rule handling with a harmless local fixture, not an attempted TEST/PROD deployment.",
+  { id: "permissions", title: "Keep approvals on; verify the boundary", shared: "No global auto-approval or permission bypass is the baseline. Record filesystem/network scope, isolated unattended execution and sanitized tool audit evidence. Bind high-impact approval to actor, action, target and exact parameters; validate inputs and outputs independently. Test boundaries with harmless fixtures, never TEST/PROD operations.",
     claudeCode: { text: "Use .claude/settings.json and /permissions. The template starts in manual mode and provides deny examples for PAC promotion commands in both Bash and PowerShell. Rules need host-specific verification and do not cover every wrapper, API or MCP path.", code: '{\n  "permissions": {\n    "defaultMode": "default",\n    "deny": [\n      "Bash(pac solution import *)",\n      "Bash(pac pipeline deploy *)",\n      "PowerShell(pac solution import *)",\n      "PowerShell(pac pipeline deploy *)"\n    ]\n  }\n}', caption: ".claude/settings.json: command deny examples", source: "claude-permissions" },
     copilot: { cli: { text: "Start with normal approval prompts. A deny-tool flag blocks matching tools and overrides allow flags. This deliberately conservative example denies all PAC shell calls; approved DEV operations need a reviewed, narrower policy. MCP and wrapper access still needs separate control.", code: 'copilot --deny-tool "shell(pac)" --deny-tool "shell(git push)"', caption: "PowerShell: conservative Copilot CLI example", source: "copilot-permissions" },
       vscode: { text: "Use Manual permissions in a supported session. Disable terminal/global auto-approval and review saved tool approvals. A false command rule asks for approval; it does not block execution. Local PreToolUse hooks may deny calls, but they are host-specific. Some Agent Host worktree sessions use Allow all; choose an appropriate manually controlled session or stop.", code: '{\n  "chat.tools.global.autoApprove": false,\n  "chat.tools.terminal.enableAutoApprove": false\n}', caption: ".vscode/settings.json: approvals, not a deny policy", source: "vscode-approvals" } },

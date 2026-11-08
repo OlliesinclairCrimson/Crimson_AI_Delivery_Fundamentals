@@ -26,3 +26,11 @@ Host, plugin, schema or MCP changes; new licensing/model choices; an access or a
 Keep a current source/check date and version evidence. Vendor documentation and support status can change faster than the fundamentals. Where documentation conflicts, identify the actual supported host/version and retain conservative controls rather than claiming universal enforcement.
 
 Retrospective updates to AGENTS.md and skills follow the same human review requirement as code. A personal agent memory entry is not a team policy.
+
+## v0.2 ownership
+
+Assign owners for the tool register, G0-G9 evidence, delivered-AI evaluation/monitoring and expiring exceptions. Review maturity separately from approval status; a stable SDK can expose preview features. Model, knowledge, prompt, tool/schema, orchestration and permission changes trigger re-evaluation proportionate to risk.
+
+Use team-level measures: gate/evaluation pass rates, escaped defects, review rework, lead time, deployment/recovery outcomes, usage cost and tool-denial/approval anomalies. Do not rank individuals. Keep both coding agents under the same assessment; no centrally preferred agent is declared.
+
+New source entries retain individual check dates; do not advance an old adapter's review date merely because the package version changed. Unverified or blocked platform checks stay explicit.

@@ -13,6 +13,7 @@ Read AGENTS.md and the accepted story before editing. If client configuration or
 4. Cover security roles, data handling, accessibility, performance and cost where relevant.
 5. Map each criterion to a feasible DEV verification method.
 6. Flag unresolved decisions and split suggestions for human consideration.
+7. Confirm risk tier, G2/G3 readiness and approved tool/action scope. For delivered AI, require agreed evaluation thresholds and a human-recorded G5 applicability decision.
 
 Return a readiness assessment: ready, ready with explicitly approved exceptions, or blocked. List criterion IDs, proposed checks and questions for the owner. Do not build a blocked story.
 

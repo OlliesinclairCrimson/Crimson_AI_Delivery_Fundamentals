@@ -25,3 +25,9 @@ A serious access, approval or data-use breach fails the run and blocks operation
 Compare only accepted results under the same rubric. Explain missing evidence and failed stories. Identify workload-specific advantages and unresolved gaps; three stories are directional evidence, not a statistically conclusive ranking.
 
 Have the technical lead and engagement owner review the recommendation. Keep the playbook usable whichever adapter is chosen.
+
+## Expanded workloads
+
+The original three stories remain a useful small pilot. Add approved Azure, Foundry, Fabric or Dynamics cases only when relevant, with the same spec, source, data, budgets and reviewer for both tools. Record native-tool versus plugin use and each surface's unsupported capabilities explicitly; do not average an unrun/unsupported route into a claimed success.
+
+Measure accepted results and applicable gate/evaluation evidence, not generated artifact counts. Both agents remain equal choices under the common controls; workload-specific evidence is not a blanket preferred-agent policy.

@@ -13,5 +13,6 @@ Read AGENTS.md and the proposed design. Never invent prices, entitlements or ten
 4. Record date, currency, model/plan, units, assumptions and source links.
 5. Estimate a range only when the inputs are known; otherwise identify the missing inputs.
 6. Recommend budgets, alerts or caps where supported and identify the owner.
+7. Record provider/preview assessment in the tool register. Include evaluation, telemetry and runtime tool costs, plus the agreed stop/escalation thresholds; lower cost never offsets a boundary breach.
 
 Return confirmed requirements, uncertain requirements, cost drivers and required decisions. A licensing specialist or engagement owner approves the result; the agent does not authorize purchases.

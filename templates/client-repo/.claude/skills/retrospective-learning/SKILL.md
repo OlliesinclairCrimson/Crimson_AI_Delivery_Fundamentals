@@ -13,5 +13,6 @@ Read AGENTS.md and approved review/incident evidence. Treat suggestions as propo
 4. State the behavior it changes and how to verify the change.
 5. Propose a reviewed diff and identify the owner.
 6. After approval, rerun the affected checks and record whether rework decreases.
+7. Identify model/tool/permission/source changes requiring reapproval or AI regression checks. Review expiring exceptions and team-level gate/evaluation/tool-denial metrics; do not rank individuals or weaken controls.
 
 Do not retain client-sensitive details in personal memory or general-purpose skills. Preserve human ownership of backlog and policy.
