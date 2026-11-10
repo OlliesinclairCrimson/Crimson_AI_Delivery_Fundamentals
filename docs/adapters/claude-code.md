@@ -1,6 +1,6 @@
 # Claude Code adapter
 
-Reference v0.1. Documentation checked 13 October 2026. Validate the actual host, OS, version and client tenant before live work. Shared delivery requirements are in the website and the client's AGENTS.md, not duplicated here.
+Reference v0.2; existing setup instructions checked 13 October 2026. Validate the actual host, OS, version and client tenant before live work. Shared delivery requirements are in the website and the client's AGENTS.md, not duplicated here. New shared-control and platform references have separate dates below.
 
 ## Install and sign in
 
@@ -82,6 +82,14 @@ If consent, registration or access fails, stop and involve the administrator; do
 
 Complete the client template's docs/evidence/setup-validation.md before a real story. Include versions, loaded instructions, a skill exercise, read-only DEV connectivity and administrator-confirmed boundaries.
 
-## First-party references
+## v0.2 shared controls and platform routes
+
+Claude Code and GitHub Copilot are equal choices, not default/specialist roles. The existing install/plugin guidance above remains checked 13 October 2026. The [shared control guidance](../agentic-development.md) and [Azure](../platforms/azure.md), [Foundry](../platforms/microsoft-foundry.md), [Fabric](../platforms/fabric.md) and [Dynamics](../platforms/dynamics-365.md) routes add platform-native setup without assuming dedicated plugins.
+
+Before invocation, complete the tool register and approved filesystem/network/action scope. Bind high-impact approvals to the actor, action, exact target and parameters; independently validate inputs and read-back results, and retain only sanitized audit evidence. Development identity remains DEV-only.
+
+The [sandbox documentation](https://code.claude.com/docs/en/sandboxing), checked 8 November 2026, says shell isolation runs on macOS/Linux/WSL2, not native Windows, and does not cover file tools, hooks or MCP. Use approved project/container isolation for unattended work; do not weaken permissions to compensate.
+
+## First-party references (existing routes)
 
 [Setup](https://code.claude.com/docs/en/setup), [memory/instructions](https://code.claude.com/docs/en/memory), [permissions](https://code.claude.com/docs/en/permissions), [MCP](https://code.claude.com/docs/en/mcp), [Power Platform skills](https://github.com/microsoft/power-platform-skills), [Dataverse administration](https://learn.microsoft.com/en-us/power-apps/maker/data-platform/data-platform-mcp-disable).

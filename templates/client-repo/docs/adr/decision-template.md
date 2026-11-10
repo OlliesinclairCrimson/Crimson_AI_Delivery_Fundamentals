@@ -8,6 +8,8 @@ Approval reference:
 ## Problem and constraints
 
 Confirmed facts, client policy, existing platform and success measures:
+Approved control hierarchy, risk tier and data classification:
+Platform-native capability considered before bespoke extension:
 
 ## Options
 
@@ -22,6 +24,9 @@ Confirmed facts, client policy, existing platform and success measures:
 Recommendation is not approval:
 
 ## Assumptions, risks and consequences
+
+Preview/support/ALM limitations, agent autonomy, identity separation, tool authority, rollback and operational costs:
+Applicable delivered-AI evaluations and expiring exceptions:
 
 ## Current sources
 

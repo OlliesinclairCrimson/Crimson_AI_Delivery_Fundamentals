@@ -10,6 +10,9 @@ This is a tool-neutral starting point, not a configured client environment. Do n
 4. Review the skills and remove or adapt any that do not match the engagement.
 5. Complete docs/evidence/setup-validation.md for each supported tool surface.
 6. Configure branch protections and required human review in the client's Git provider. This template cannot enforce those server-side policies.
+7. Complete the tool register and applicable lifecycle, release, exception and delivered-AI records linked from AGENTS.md. Claude Code and GitHub Copilot are equal choices.
+
+Production branches need independent human review, required build/test/policy checks, resolved conversations, no direct pushes and sensitive-area code-owner review. Administrators record actual enforcement, available secret/dependency/code scans or approved equivalents, and restricted bypass privileges. No real reviewer identities or tenant policies are preconfigured here.
 
 ## Instructions
 
@@ -36,3 +39,5 @@ For Copilot CLI, use normal approval prompts and reviewed --deny-tool flags. A c
 solutions, agents and src hold the appropriate reviewable artifacts. Export/synchronize direct DEV changes before promotion. Git branches alone do not isolate shared live environments.
 
 Story, decision, evidence, setup and pilot templates are under docs. Do not include raw sensitive logs or data; retain approved evidence in the correct client system and reference it.
+
+The [tool register](docs/governance/tool-register.md), [gates](docs/governance/lifecycle-gates.md), [release readiness](docs/governance/release-readiness.md), [exceptions](docs/governance/exception-template.md), [graduation](docs/governance/prototype-graduation.md) and [delivered-agent assurance](docs/responsible-ai/agent-assurance.md) make scope and ownership explicit. They are not evidence of approved corporate policy or live platform validation.

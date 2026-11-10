@@ -30,7 +30,7 @@ export function renderPage(template, selection) {
     SETUP: setupHtml(selection),
     SOURCES: sourcesHtml()
   };
-  let html = template.replace("<body>", `<body data-tool="${selection.tool}" data-surface="${selection.surface}">`);
+  let html = template.replace("<body>", `<body data-tool="${selection.tool ?? ""}" data-surface="${selection.surface}">`);
   for (const [name, content] of Object.entries(replacements)) {
     const marker = `<!-- ${name} -->`;
     if (!html.includes(marker)) throw new Error(`Missing build marker: ${name}`);
@@ -51,7 +51,7 @@ export async function buildSite(output = join(projectRoot, "dist")) {
   }
   const template = await readFile(join(projectRoot, "index.html"), "utf8");
   const pages = {
-    "index.html": { tool: "claudeCode", surface: "cli" },
+    "index.html": { tool: null, surface: "cli" },
     "claude-code.html": { tool: "claudeCode", surface: "cli" },
     "copilot-cli.html": { tool: "copilot", surface: "cli" },
     "copilot-vscode.html": { tool: "copilot", surface: "vscode" }
@@ -61,8 +61,8 @@ export async function buildSite(output = join(projectRoot, "dist")) {
   }
   await writeFile(join(destination, ".nojekyll"), "");
   await writeFile(join(destination, "README.txt"), `Crimson AI Delivery Fundamentals v${release.version}\n\nThis is a pre-built static reference. Publish these extracted files to an approved access-controlled Crimson host. No Node/npm backend is needed to serve them.\n\nStart with index.html. JavaScript works when served by an HTTP(S) host; direct file opening may limit enhancements. Pre-rendered tool routes and documents remain available.\n\nSee docs/publication.md and docs/review.md. No live tenant validation, organization approval or hosting deployment is claimed. The client starter is intentionally unconfigured.\n`);
-  await writeFile(join(destination, "docs", "sources.md"), `# First-party source register\n\nDocumentation checked ${release.reviewed}. Not a tenant-validation claim.\n\n${sources.map(source => `- [${source.title}](${source.url}): ${source.note}`).join("\n")}\n`);
-  const zipOptions = { level: 6, mtime: new Date("2026-10-13T00:00:00Z") };
+  await writeFile(join(destination, "docs", "sources.md"), `# First-party source register\n\nDates are per source; no live tenant validation is claimed.\n\n${sources.map(source => `- [${source.title}](${source.url}): ${source.note} Checked ${source.reviewed ?? "2026-10-13"}.`).join("\n")}\n`);
+  const zipOptions = { level: 6, mtime: new Date(`${release.reviewed}T00:00:00Z`) };
   const clientFiles = await collectFiles(join(projectRoot, "templates", "client-repo"), "client-repo");
   await writeFile(join(destination, "downloads", "crimson-client-template.zip"), zipSync(clientFiles, zipOptions));
   const siteFiles = await collectFiles(destination);

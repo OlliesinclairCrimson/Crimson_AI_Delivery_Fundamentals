@@ -16,6 +16,9 @@ Out of scope:
 Dependencies:
 Data sources and approval:
 Permitted DEV:
+Business / Technical Owners:
+Risk tier and approved tool/action boundaries:
+Applicable lifecycle gates, including delivered-AI assurance rationale:
 
 ## Acceptance criteria
 

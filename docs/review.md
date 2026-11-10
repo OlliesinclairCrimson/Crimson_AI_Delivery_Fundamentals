@@ -50,3 +50,21 @@ Those require approved accounts/environments and the named administrator, engage
 ## Publication position
 
 The built artifact is ready for review and publication as a clearly labelled internal reference. Follow publication.md for access-controlled hosting and accountable sign-off. Complete per-tool client setup validation before using it for real environment operations, and pilot.md before making comparative performance/cost claims.
+
+## v0.2 review - 8 November 2026
+
+The earlier v0.1 record above remains historical. This update adapts the supplied draft agentic standard while explicitly excluding its preferred-agent policy. The index starts unselected; tool-specific guidance requires a reader choice, including when saved preferences contain an invalid tool or surface. Both explicit tool choices, shared controls and existing static routes remain supported.
+
+New documentation covers G0-G9, tool approvals/execution boundaries, delivered-agent assurance, graduation, release and expiring exceptions. The original 13 workloads remain, with five added native routes for Azure, Foundry, Fabric and separate Dynamics CE/ERP needs. New source references have their own review dates; existing adapter checks are not relabelled.
+
+Verification performed:
+
+- `npm run check`: 25 tests passed and the v0.2.0 static publication/template archives built.
+- `tests/browser-check.js`: 43 checks passed through the Playwright harness, including explicit/saved/invalid/blocked choices, shared verification, static/no-JavaScript routes, filtering, print, downloads, clipboard failure and keyboard navigation.
+- Desktop and 390px mobile choice screens inspected: equal unselected buttons, readable shared content and no page-level horizontal overflow. Session screenshots are retained separately, not embedded in the publication.
+- UI detector returned no deterministic findings for the changed UI targets. This is not a formal accessibility conformance audit.
+- Local Markdown/HTML links, hidden template files, six portable skills, new assurance records and consistent release/source-date metadata were checked.
+
+The first validation attempt required restoring the existing missing `fflate` dependency. A new assertion was corrected to recognize both truthful "no live" and "not a live" wording. No actual Azure/Foundry/Fabric/Dynamics tenant call, vendor-agent enforcement test, deployment, comparative pilot or corporate approval is claimed.
+
+Dependency note: `npm audit` reported the existing moderate `fflate` 0.8.2 advisory [GHSA-px8p-9vwx-vf98](https://github.com/advisories/GHSA-px8p-9vwx-vf98), concerning `unzipSync` parsing malformed ZIP64 input. The dependency pin is unchanged; this task adds no runtime dependency or untrusted archive ingestion. Tests inspect locally generated archives. Remediation of that pre-existing advisory is outside this content/neutrality update and remains explicit, not a claim of a clean dependency scan.

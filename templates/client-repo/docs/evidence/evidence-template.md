@@ -19,10 +19,16 @@ Solution checker and severity:
 Role and negative-permission checks:
 Error paths, accessibility and performance:
 Source export/synchronization:
+Applicable lifecycle gates and approved tool-register entries:
+Agent/initiator, tool-call, exact approval and outcome trace references (sanitized):
+Dependency/license/provenance and secret/code scan evidence:
+Delivered-AI assurance record, evaluation dataset/version and thresholds where applicable:
 
 ## Limitations and defects
 
 Do not call missing checks passing. Explain any exception, its owner and explicit acceptance:
+Exception scope, authorized approver, compensating controls and expiry:
+Not-applicable gates and human-approved rationale:
 
 ## Acceptance and review
 
@@ -30,3 +36,5 @@ Human reviewer:
 Product owner decision:
 Approval reference:
 Release remains a separate human-approved step.
+
+Link [lifecycle gates](../governance/lifecycle-gates.md), [agent assurance](../responsible-ai/agent-assurance.md) and [release readiness](../governance/release-readiness.md) as applicable.

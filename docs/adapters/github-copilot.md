@@ -1,6 +1,6 @@
 # GitHub Copilot adapter
 
-Reference v0.1. Documentation checked 13 October 2026. Copilot CLI and Copilot in VS Code are distinct supported reference routes, not interchangeable installation targets. Cloud agent, GitHub Copilot app and other IDEs are outside this release's setup scope.
+Reference v0.2; existing setup instructions checked 13 October 2026. Copilot CLI and Copilot in VS Code are distinct supported reference routes, not interchangeable installation targets. Cloud agent, GitHub Copilot app and other IDEs remain outside these setup routes. New shared-control and platform references have separate dates below.
 
 ## CLI: install and sign in
 
@@ -101,6 +101,14 @@ Install PAC using a supported method; record its actual executable/version. Conn
 
 Complete the per-tool setup-validation template: loaded instructions, skill invocation, server discovery, read-only DEV connectivity, approval handling and administrator-confirmed access. This adapter has documentation evidence, not live tenant validation or a tool superiority claim.
 
-## First-party references
+## v0.2 shared controls and platform routes
+
+GitHub Copilot and Claude Code are equal choices. GitHub repository use does not make Copilot the preferred development agent. Existing CLI/VS Code install/plugin instructions retain their 13 October 2026 check date; cloud/app setup remains outside those reference routes.
+
+Use the [shared controls](../agentic-development.md) and detailed [Azure](../platforms/azure.md), [Foundry](../platforms/microsoft-foundry.md), [Fabric](../platforms/fabric.md) and [Dynamics](../platforms/dynamics-365.md) platform-native routes with approved capabilities. Neither Copilot login nor installation grants platform access.
+
+Complete the tool register, filesystem/network restrictions and unattended isolation evidence. Require exact actor/action/target/parameter approvals, independent parameter/result checks and sanitized tool/outcome audit records. Verify controls in the actual host; DEV-only credentials, independent human review and human release authority remain mandatory for configured client work.
+
+## First-party references (existing routes)
 
 [CLI install](https://docs.github.com/en/copilot/how-tos/copilot-cli/set-up-copilot-cli/install-copilot-cli), [CLI instructions](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions), [CLI skills](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills), [CLI MCP](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-mcp-servers), [CLI permissions](https://docs.github.com/en/copilot/concepts/copilot-surfaces/copilot-cli), [VS Code approvals](https://code.visualstudio.com/docs/agents/run/approvals), [VS Code MCP](https://code.visualstudio.com/docs/agent-customization/mcp-servers), [VS Code plugins](https://code.visualstudio.com/docs/agent-customization/agent-plugins).

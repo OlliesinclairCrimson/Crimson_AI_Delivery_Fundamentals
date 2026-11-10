@@ -13,5 +13,6 @@ Read AGENTS.md and the accepted criteria. Confirm approved DEV and identity befo
 4. Record checker severities and unresolved failures without suppressing them.
 5. Distinguish pass, fail, blocked and not run. Never convert missing evidence into a pass.
 6. Sanitize evidence; reference approved storage rather than committing sensitive logs.
+7. Link applicable lifecycle gates, scan/provenance results and delivered-agent evaluation/tool/fallback evidence. Capture sanitized actor/action/target/parameter approvals and actual outcomes; record not-applicable rationale separately from unrun checks.
 
 Use docs/evidence/evidence-template.md. Return uncovered criteria, defects and required human acceptance decisions. Release/publish permission is not implied by a test instruction.

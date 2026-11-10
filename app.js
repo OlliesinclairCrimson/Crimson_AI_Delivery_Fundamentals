@@ -1,4 +1,4 @@
-import { families } from "./data.js";
+import { families, workloads } from "./data.js";
 import { adapterLabel, filtersHtml, filteredWorkloads, normalizeSelection, setupHtml, workloadHtml } from "./render.js";
 
 const storageKey = "crimson-playbook-v1";
@@ -29,9 +29,10 @@ function persist() {
 }
 
 function updateControls() {
-  document.querySelectorAll("[data-tool]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.tool === selection.tool)));
-  document.querySelectorAll("[data-surface]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.surface === selection.surface)));
+  document.querySelectorAll("button[data-tool]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.tool === selection.tool)));
+  document.querySelectorAll("button[data-surface]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.surface === selection.surface)));
   document.querySelectorAll("[data-surface-control]").forEach(control => { control.hidden = selection.tool !== "copilot"; });
+  document.querySelectorAll(".adapter-note").forEach(note => { note.textContent = selection.tool ? "Changes the adapter, never the delivery standard." : "Choose Claude Code or GitHub Copilot to see tool-specific guidance. Neither is preferred; shared requirements remain visible."; });
 }
 
 function renderWorkloads() {
@@ -96,7 +97,7 @@ document.getElementById("workload-search").addEventListener("input", event => {
 window.addEventListener("beforeprint", () => {
   document.getElementById("workload-grid").innerHTML = workloadHtml(selection);
   document.getElementById("no-workloads").hidden = true;
-  document.getElementById("workload-count").textContent = `13 workloads · ${adapterLabel(selection)}`;
+  document.getElementById("workload-count").textContent = `${workloads.length} workloads · ${adapterLabel(selection)}`;
 });
 window.addEventListener("afterprint", renderWorkloads);
 

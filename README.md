@@ -1,8 +1,10 @@
 # Crimson AI Delivery Fundamentals
 
-A tool-neutral reference for Crimson developers and consultants: delivery fundamentals, human-owned lifecycle gates, Power Platform workload guidance, Claude Code and GitHub Copilot adapters, and a downloadable client-repo starter.
+A tool-neutral reference for Crimson developers and consultants: delivery fundamentals, human-owned lifecycle gates, Microsoft platform workload guidance, Claude Code and GitHub Copilot adapters, and a downloadable client-repo starter.
 
-**Version 0.1.0** is a reference release. Tool instructions were checked against first-party documentation on 13 October 2026; no live client/tenant validation or comparative pilot is claimed. The engagement lead must approve client data, identity, access and tool use.
+**Version 0.2.0** is a reference release. Claude Code and GitHub Copilot are equal choices: first-time readers select a tool before tool-specific guidance is shown. New platform documentation was checked on 8 November 2026; existing adapters retain their 13 October check date. No live tenant validation or completed comparative pilot is claimed. The paper-derived guidance is adapted from a draft, not an assertion of approved Crimson policy.
+
+Read [agentic development](docs/agentic-development.md), [paper alignment](docs/standard-alignment.md) and [prototype graduation](docs/prototype-graduation.md). Detailed shared setup routes cover [Azure](docs/platforms/azure.md), [Microsoft Foundry](docs/platforms/microsoft-foundry.md), [Fabric](docs/platforms/fabric.md) and [Dynamics 365](docs/platforms/dynamics-365.md), with separate harness notes and explicit privilege/support boundaries.
 
 ## Read and preview
 
@@ -38,6 +40,7 @@ The validation workflow checks changes and packages a site artifact. Uploading a
 - Official [Crimson wordmark](https://crimson.co.uk/hubfs/Crimson%20-%20Wordmark%20-%20Positive%20-%20RGB.svg): bundled unchanged as `assets\crimson-wordmark.svg`, with no external image request
 - Short tool guides: [Claude Code](docs/adapters/claude-code.md) and [GitHub Copilot](docs/adapters/github-copilot.md)
 - Canonical client template: `templates\client-repo`
+- Reusable tool, lifecycle, release, exception and graduation records: `templates\client-repo\docs\governance`; delivered-agent assurance: `templates\client-repo\docs\responsible-ai`
 - [Maintenance ownership](docs/maintenance.md), [training refresh](docs/training.md), [pilot procedure](docs/pilot.md) and [release notes](docs/release-notes.md)
 - [Completed review and refinement record](docs/review.md), including what remains tenant-specific
 
